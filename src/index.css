@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Space Grotesk", "Helvetica Neue", sans-serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-text: var(--text);
+  --color-text-secondary: var(--text-secondary);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+}
+
+:root {
+  --bg: #faf9f6;
+  --surface: #ffffff;
+  --surface-2: #f1f1ee;
+  --text: #14171a;
+  --text-secondary: #565c63;
+  --border: #e4e4e0;
+  --border-strong: #d2d2cc;
+  --accent: #e8672e;
+  --accent-ink: #14171a;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0b0d0f;
+  --surface: #14171a;
+  --surface-2: #1b1f23;
+  --text: #f3f4f1;
+  --text-secondary: #9ba0a6;
+  --border: #262b30;
+  --border-strong: #33393f;
+  --accent: #ff8a3d;
+  --accent-ink: #14171a;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
