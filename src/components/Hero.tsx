@@ -1,7 +1,7 @@
 const certifications = [
-  "AWS Certified Security – Specialty",
-  "AWS Solutions Architect – Associate (SAA-C03) Training",
-  "Cloud Infrastructure Engineering — AQskill",
+  "AWS Certified Security — Udemy",
+  "AWS Solutions Architect — Udemy",
+  "Cloud Infrastructure Engineering — Udemy",
 ];
 
 export function Hero() {
