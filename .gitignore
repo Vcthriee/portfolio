@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Personal documents (contain phone/email — never publish to this public repo)
+resume/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

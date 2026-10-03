@@ -17,14 +17,16 @@ export const projects: Project[] = [
   {
     name: "Nexa — Cloud Infrastructure",
     status: "Ongoing",
-    tag: "AWS · Terraform · EC2 · RDS · CloudFront · ALB",
+    tag: "AWS · Terraform · EC2 · RDS · ALB · Multi-AZ · CloudFront",
     summary:
       "An AWS infrastructure project grown in deliberate, evidence-driven stages — each addition justified by a real, proven problem, not by what tooling exists.",
     bullets: [
       "Reorganized a full-stack app (React, Fastify, PostgreSQL) into a clean app/infrastructure boundary, then provisioned a single-AZ AWS architecture in Terraform — VPC, EC2, RDS, S3, CloudFront, Route 53 — deliberately without a load balancer or Auto Scaling until a real need justified them.",
       "Deliberately broke the live environment: killed the running process, exhausted disk space, rebooted under load, and ran a full network-exposure scan. Found one real gap — no process supervisor — fixed it with systemd, then proved the fix by killing the process again and watching it recover unassisted.",
-      "Escalated to sustained, high-concurrency load testing and found the real capacity ceiling: the instance held up when traffic ran through CloudFront, but the same load sent directly to the origin caused genuine timeouts — direct, reproducible evidence for adding a load balancer and a second instance across two Availability Zones.",
-      "Every decision recorded as a formal Architecture Decision Record, with a running evolution log from the original design to what's live today.",
+      "Escalated to sustained, high-concurrency load testing and found the real capacity ceiling — used that evidence to add an Application Load Balancer and a second EC2 instance across two Availability Zones, a NAT Gateway per zone, and AWS Systems Manager replacing SSH entirely. Proved it directly: stopped a live instance mid-traffic and watched the load balancer reroute with zero dropped requests.",
+      "Pushed load further and found the next real bottleneck — not the database, not compute, an undersized connection pool queuing requests behind it. Right-sized it against the database's actual measured connection ceiling, not a default, and confirmed zero errors at the same load afterward.",
+      "Hit two real production incidents along the way — a security group replacement that deadlocked on its own dependency chain, and an AMI update that broke a hardcoded disk size mid-deploy — and root-caused both from first principles instead of guessing a fix.",
+      "Every decision recorded as a formal Architecture Decision Record, with a running evolution log and implementation notes from the original design through every incident and fix.",
     ],
     links: [{ label: "GitHub", url: "https://github.com/Vcthriee/NEXA_COMPANY" }],
   },
