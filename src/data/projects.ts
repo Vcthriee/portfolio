@@ -17,7 +17,7 @@ export const projects: Project[] = [
   {
     name: "Nexa — Cloud Infrastructure",
     status: "Ongoing",
-    tag: "AWS · Terraform · EC2 · RDS · ALB · Multi-AZ · CloudFront",
+    tag: "AWS · Terraform · EC2 · RDS · ALB · Multi-AZ · CloudFront · IAM",
     summary:
       "An AWS infrastructure project grown in deliberate, evidence-driven stages — each addition justified by a real, proven problem, not by what tooling exists.",
     bullets: [
@@ -27,6 +27,7 @@ export const projects: Project[] = [
       "Pushed load further and found the next real bottleneck — not the database, not compute, an undersized connection pool queuing requests behind it. Right-sized it against the database's actual measured connection ceiling, not a default, and confirmed zero errors at the same load afterward.",
       "Hit two real production incidents along the way — a security group replacement that deadlocked on its own dependency chain, and an AMI update that broke a hardcoded disk size mid-deploy — and root-caused both from first principles instead of guessing a fix.",
       "Every decision recorded as a formal Architecture Decision Record, with a running evolution log and implementation notes from the original design through every incident and fix.",
+      "Audited the deployed infrastructure's real security posture directly against the Terraform, not from memory — confirmed a strict least-privilege chain (internet to load balancer to compute to database, each tier reachable only from the one before it), no public IP on the compute tier, and SSH removed entirely in favor of IAM-audited access through AWS Systems Manager. Documented the real gaps left open just as plainly: unencrypted database storage, a database password still sitting in plaintext in the launch script and Terraform state, and an HTTP-only load balancer with no WAF or rate limiting.",
     ],
     links: [{ label: "GitHub", url: "https://github.com/Vcthriee/NEXA_COMPANY" }],
   },

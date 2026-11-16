@@ -1,5 +1,6 @@
 import { About } from "./components/About";
 import { Contact } from "./components/Contact";
+import { Experience } from "./components/Experience";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
@@ -15,6 +16,7 @@ function App() {
       <Header theme={theme} onToggleTheme={toggleTheme} />
       <main>
         <Hero />
+        <Experience />
         <About />
         <Projects />
         <Skills />
