@@ -7,9 +7,8 @@ export function About() {
           Cloud infrastructure and DevOps engineer with hands-on experience designing,
           deploying, securing, and operating AWS infrastructure end to end, from
           Terraform-provisioned VPCs and compute to deliberate failure testing on live
-          systems. Strong foundation in networking, Linux systems, and cloud security,
-          currently deepening expertise in site reliability engineering and infrastructure
-          automation. In tech since 2024.
+          systems. Strong foundation in networking, Linux systems, and cloud security.
+          In tech since 2024.
         </p>
       </div>
     </section>
