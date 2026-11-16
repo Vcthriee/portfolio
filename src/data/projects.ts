@@ -12,35 +12,35 @@ export interface Project {
   links: ProjectLink[];
 }
 
-// Update this file as work progresses — the page re-renders straight from here.
+// Update this file as work progresses. The page re-renders straight from here.
 export const projects: Project[] = [
   {
-    name: "Nexa — Cloud Infrastructure",
+    name: "Nexa: Cloud Infrastructure",
     status: "Ongoing",
     tag: "AWS · Terraform · EC2 · RDS · ALB · Multi-AZ · CloudFront · IAM",
     summary:
-      "An AWS infrastructure project grown in deliberate, evidence-driven stages — each addition justified by a real, proven problem, not by what tooling exists.",
+      "An AWS infrastructure project grown in deliberate, evidence-driven stages, where each addition is justified by a real, proven problem, not by what tooling exists.",
     bullets: [
-      "Reorganized a full-stack app (React, Fastify, PostgreSQL) into a clean app/infrastructure boundary, then provisioned a single-AZ AWS architecture in Terraform — VPC, EC2, RDS, S3, CloudFront, Route 53 — deliberately without a load balancer or Auto Scaling until a real need justified them.",
-      "Deliberately broke the live environment: killed the running process, exhausted disk space, rebooted under load, and ran a full network-exposure scan. Found one real gap — no process supervisor — fixed it with systemd, then proved the fix by killing the process again and watching it recover unassisted.",
-      "Escalated to sustained, high-concurrency load testing and found the real capacity ceiling — used that evidence to add an Application Load Balancer and a second EC2 instance across two Availability Zones, a NAT Gateway per zone, and AWS Systems Manager replacing SSH entirely. Proved it directly: stopped a live instance mid-traffic and watched the load balancer reroute with zero dropped requests.",
-      "Pushed load further and found the next real bottleneck — not the database, not compute, an undersized connection pool queuing requests behind it. Right-sized it against the database's actual measured connection ceiling, not a default, and confirmed zero errors at the same load afterward.",
-      "Hit two real production incidents along the way — a security group replacement that deadlocked on its own dependency chain, and an AMI update that broke a hardcoded disk size mid-deploy — and root-caused both from first principles instead of guessing a fix.",
+      "Reorganized a full-stack app (React, Fastify, PostgreSQL) into a clean app/infrastructure boundary, then provisioned a single-AZ AWS architecture in Terraform (VPC, EC2, RDS, S3, CloudFront, Route 53), deliberately without a load balancer or Auto Scaling until a real need justified them.",
+      "Deliberately broke the live environment: killed the running process, exhausted disk space, rebooted under load, and ran a full network-exposure scan. Found one real gap, a missing process supervisor, fixed it with systemd, then proved the fix by killing the process again and watching it recover unassisted.",
+      "Escalated to sustained, high-concurrency load testing and found the real capacity ceiling, then used that evidence to add an Application Load Balancer and a second EC2 instance across two Availability Zones, a NAT Gateway per zone, and AWS Systems Manager replacing SSH entirely. Proved it directly: stopped a live instance mid-traffic and watched the load balancer reroute with zero dropped requests.",
+      "Pushed load further and found the next real bottleneck: not the database, not compute, but an undersized connection pool queuing requests behind it. Right-sized it against the database's actual measured connection ceiling, not a default, and confirmed zero errors at the same load afterward.",
+      "Hit two real production incidents along the way (a security group replacement that deadlocked on its own dependency chain, and an AMI update that broke a hardcoded disk size mid-deploy) and root-caused both from first principles instead of guessing a fix.",
       "Every decision recorded as a formal Architecture Decision Record, with a running evolution log and implementation notes from the original design through every incident and fix.",
-      "Audited the deployed infrastructure's real security posture directly against the Terraform, not from memory — confirmed a strict least-privilege chain (internet to load balancer to compute to database, each tier reachable only from the one before it), no public IP on the compute tier, and SSH removed entirely in favor of IAM-audited access through AWS Systems Manager. Documented the real gaps left open just as plainly: unencrypted database storage, a database password still sitting in plaintext in the launch script and Terraform state, and an HTTP-only load balancer with no WAF or rate limiting.",
+      "Audited the deployed infrastructure's real security posture directly against the Terraform, not from memory. Confirmed a strict least-privilege chain (internet to load balancer to compute to database, each tier reachable only from the one before it), no public IP on the compute tier, and SSH removed entirely in favor of IAM-audited access through AWS Systems Manager. Documented the real gaps left open just as plainly: unencrypted database storage, a database password still sitting in plaintext in the launch script and Terraform state, and an HTTP-only load balancer with no WAF or rate limiting.",
     ],
     links: [{ label: "GitHub", url: "https://github.com/Vcthriee/NEXA_COMPANY" }],
   },
   {
-    name: "Ecommerce Platform — Terraform Modules, ECS, and Migration to EKS",
+    name: "Ecommerce Platform: Terraform Modules, ECS, and Migration to EKS",
     tag: "AWS · Terraform · ECS Fargate · EKS · Docker · Helm · GitHub Actions",
     summary:
       "A reusable Terraform module library consumed as a versioned dependency, carrying a real application through both ECS Fargate and a migration to EKS.",
     bullets: [
-      "Built a reusable, production-grade Terraform module library (networking, security, database, compute) — consumed as a versioned dependency by downstream projects, not copy-pasted per environment.",
+      "Built a reusable, production-grade Terraform module library (networking, security, database, compute), consumed as a versioned dependency by downstream projects, not copy-pasted per environment.",
       "Networking module provisions a multi-AZ VPC with dual NAT Gateways and VPC endpoints; database module provisions Multi-AZ RDS PostgreSQL with a read replica, RDS Proxy, and ElastiCache Redis, with all credentials in Secrets Manager.",
-      "CI/CD via GitHub Actions using OIDC federation — no long-lived AWS credentials stored in the pipeline at any point.",
-      "Deployed a real Node.js/Express API on ECS Fargate, then migrated the same application to EKS — provisioning a managed cluster in Terraform and moving deployment to Helm — to evaluate the operational tradeoffs firsthand rather than choosing one on reputation alone.",
+      "CI/CD via GitHub Actions using OIDC federation, with no long-lived AWS credentials stored in the pipeline at any point.",
+      "Deployed a real Node.js/Express API on ECS Fargate, then migrated the same application to EKS, provisioning a managed cluster in Terraform and moving deployment to Helm, to evaluate the operational tradeoffs firsthand rather than choosing one on reputation alone.",
     ],
     links: [
       { label: "Infra Modules", url: "https://github.com/Vcthriee/ECS-infra-modules" },
@@ -50,13 +50,13 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: "Ansible — Host Update & Backup Automation",
+    name: "Ansible: Host Update & Backup Automation",
     tag: "Ansible · Linux · Ansible Vault",
     summary:
       "A configuration-management complement to the Terraform work above, with real secrets handling.",
     bullets: [
       "Wrote a playbook that safely updates package caches and backs up key configuration files on a managed Ubuntu host.",
-      "Used Ansible Vault to encrypt host-specific variables instead of storing them in plaintext inventory files — first hands-on exposure to secrets management in configuration management, distinct from Secrets Manager's role above.",
+      "Used Ansible Vault to encrypt host-specific variables instead of storing them in plaintext inventory files, the first hands-on exposure to secrets management in configuration management, distinct from Secrets Manager's role above.",
     ],
     links: [
       {

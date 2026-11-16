@@ -5,11 +5,11 @@ export function About() {
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">About</p>
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-text">
           Cloud infrastructure and DevOps engineer with hands-on experience designing,
-          deploying, securing, and operating AWS infrastructure end-to-end — from
+          deploying, securing, and operating AWS infrastructure end to end, from
           Terraform-provisioned VPCs and compute to deliberate failure testing on live
           systems. Strong foundation in networking, Linux systems, and cloud security,
           currently deepening expertise in site reliability engineering and infrastructure
-          automation.
+          automation. In tech since 2024.
         </p>
       </div>
     </section>

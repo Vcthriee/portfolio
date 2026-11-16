@@ -1,7 +1,7 @@
 const certifications = [
-  "AWS Certified Security — Udemy",
-  "AWS Solutions Architect — Udemy",
-  "Cloud Infrastructure Engineering — Udemy",
+  "AWS Certified Security (Udemy)",
+  "AWS Solutions Architect (Udemy)",
+  "Cloud Infrastructure Engineering (Udemy)",
 ];
 
 export function Hero() {
@@ -14,8 +14,9 @@ export function Hero() {
         Victory Arikpo
       </h1>
       <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary">
-        I design, provision, and stress-test AWS infrastructure — then document what
-        actually broke and why. Based in Nigeria, open to remote work worldwide.
+        I design, provision, and stress-test AWS infrastructure, then document what
+        actually broke and why. In tech since 2024, based in Nigeria, open to remote
+        work worldwide.
       </p>
       <div className="mt-8 flex flex-wrap items-center gap-4">
         <a
