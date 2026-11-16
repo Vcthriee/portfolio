@@ -16,8 +16,8 @@ function App() {
       <Header theme={theme} onToggleTheme={toggleTheme} />
       <main>
         <Hero />
-        <Experience />
         <About />
+        <Experience />
         <Projects />
         <Skills />
         <Contact />
